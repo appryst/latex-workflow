@@ -23,7 +23,7 @@ This is a guide for using LaTeX with VS Code.
         -  [Optional](#optional-for-the-aesthetic)
 - [Git](#3-git)
 - [Zotero](#4-zotero)
-
+- [LaTeX Template](#latex-template)
 ## [1. LaTeX](#table-of-contents)
 
 There are two mayor TeX distributions for Windows: TeX Live and MiKTeX.
@@ -184,5 +184,8 @@ Now, set *Better BibLaTeX* as the format and check *Keep updated*:
 Choose your work folder and rename the file to `literature`
 5. Now, every time you add resources to your Zotero library, they will automatically be added to your `literature.bib` file for LaTeX.
 
+## [LaTeX Template](#table-of-contents)
 
+You can find the code of my bachelor thesis (from which the first picture in this document is taken) [here](https://github.com/noahp00/latex_template_bachelorthesis).  
+I will be adding some general LaTeX tips there soon.
 
