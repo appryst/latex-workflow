@@ -51,7 +51,7 @@ Theoretically this is everything you need to get it working, but we will cover s
 
 ### [Configuration](#table-of-contents)
 
-For the complete configuration you can just paste the content from [here](settings.json) and copy it in your `settings.json` file from VS Code. 
+For the complete configuration you can just copy the content from [here](settings.json) and paste it in your `settings.json` file from VS Code. 
 You can find that file by going to the command search with `Ctrl + Shift + P` and search for *Preferences: Open User Settings (JSON)*.
 I will go through the contents of `settings.json` step by step and afterward we will install some other useful extensions to make your life easier.
 
