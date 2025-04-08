@@ -29,7 +29,7 @@ This is a guide for using LaTeX with VS Code.
 There are two mayor TeX distributions for Windows: TeX Live and MiKTeX.
 I would recommend TeX Live, just because it has a larger user base and is available for macOS and Linux as well.
 
-To start you need to download Tex Live from [here](https://www.tug.org/texlive/) and just follow the instructions of the installer.
+To start you need to download TeX Live from [here](https://www.tug.org/texlive/) and just follow the instructions of the installer.
 The default settings contain the full installation, which I recommend so you don't have to worry about packages not being installed.
 
 ## [2. VS Code](#table-of-contents)
@@ -51,7 +51,7 @@ Theoretically this is everything you need to get it working, but we will cover s
 
 ### [Configuration](#table-of-contents)
 
-For the complete configuration you can just copy the content from [here](settings.json) and paste it in your `settings.json` file from VS Code. 
+For the complete configuration (except the optional stuff) you can just copy the content from [here](settings.json) and paste it in your `settings.json` file from VS Code. 
 You can find that file by going to the command search with `Ctrl + Shift + P` and search for *Preferences: Open User Settings (JSON)*.
 I will go through the contents of `settings.json` step by step and afterward we will install some other useful extensions to make your life easier.
 
@@ -76,12 +76,12 @@ I found some warnings to not be really useful, so I blocked them with:
 #### [Output Files](#table-of-contents)
 
 As you might have seen LaTeX produces a lot of temporary output files while building your PDF.  
-`"latex-workshop.latex.outDir": "%DIR%\\build"` changes our output directory to a dedicated `build` folder to make our work folder a bit cleaner (this is optional and normally not strictly recommended because it's always best to keep the files where they are supposed to be, but I haven't had any issues so far).  
+`"latex-workshop.latex.outDir": "%DIR%\\build"` changes your output directory to a dedicated `build` folder to make your work folder a bit cleaner (this is optional and normally not strictly recommended because it's always best to keep the files where they are supposed to be, but I haven't had any issues so far).  
 `"files.exclude": {...}` hides temporary files from view by excluding the specified file types.
 
 #### [LaTeX Workshop Settings](#table-of-contents)
 
-`"latex-workshop.latex.autoBuild.run": "onSave"` will automatically build our PDF whenever we save our document with `Ctrl + S`.  
+`"latex-workshop.latex.autoBuild.run": "onSave"` will automatically build your PDF whenever we save your document with `Ctrl + S`.  
 `"latex-workshop.view.pdf.internal.synctex.keybinding": "double-click"` will change the key bind for synctex (double-click a location in the PDF to jump to the position in the code).
 For the other way around (from code to PDF) the default is `Ctrl + Alt + J`.
 
