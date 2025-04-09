@@ -189,6 +189,6 @@ Choose your work folder and rename the file to `literature`
 
 ## [LaTeX Template](#table-of-contents)
 
-You can find the code of my bachelor thesis (from which the first picture in this document is taken) [here](https://github.com/noahp00/latex_template_bachelorthesis).  
+You can find the code of my bachelor thesis (from which the [first picture](#how-it-will-look) in this document is taken) on [here](https://github.com/noahp00/latex_template_bachelorthesis).  
 I will be adding some general LaTeX tips there soon.
 
