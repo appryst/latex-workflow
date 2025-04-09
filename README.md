@@ -165,6 +165,10 @@ git add .
 git commit -m "Commit note"
 git push origin main
 ```
+7. Add a `.gitignore` file.
+This file contains the patterns that Git shall ignore, so you don't upload unnecessary files—such as temporary files created by LaTeX or files containing personal data about you or your PC.
+An example of what this file looked like for my bachelor thesis is given [here](.gitignore).
+This step is deliberately put last, so you'll have to figure out how to remove the unwanted files from your previous commits on your own—and learn a bit of Git in the process. ;)
 
 ### [4. Zotero](#table-of-contents)
 
