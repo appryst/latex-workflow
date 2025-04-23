@@ -16,6 +16,8 @@ This is a guide for using LaTeX with VSCode.
         -  [Output Files](#output-files)
         -  [LaTeX Workshop Settings](#latex-workshop-settings)
         -  [VSCode Settings](#vscode-settings)
+        -  [LuaTeX](#luatex)
+        -  [TikZ externalize](#tip-for-advanced-users-improving-compilation-performance-with-tikz)
     -  [Extensions](#extensions)
         -  [LTeX+](#ltex)
         -  [Error Lens](#error-lens)
@@ -23,7 +25,8 @@ This is a guide for using LaTeX with VSCode.
         -  [Optional](#optional-for-the-aesthetic)
 - [Git](#3-git)
 - [Zotero](#4-zotero)
-- [LaTeX Template](#latex-template)
+- [LaTeX Template](#latex-template-for-thesis)
+
 ## [1. LaTeX](#table-of-contents)
 
 There are two mayor TeX distributions for Windows: TeX Live and MiKTeX.
@@ -51,8 +54,10 @@ Theoretically this is everything you need to get it working, but we will cover s
 
 ### [Configuration](#table-of-contents)
 
-For the complete configuration (except for the [optional stuff](#optional-for-the-aesthetic)) you can just copy the content from [here](settings.json) and paste it in your `settings.json` file from VSCode. 
-You can find that file by going to the command search with `Ctrl + Shift + P` and search for *Preferences: Open User Settings (JSON)*.
+For the basic configuration (excluding the [optional stuff](#optional-for-the-aesthetic) and [LuaTeX](#luatex)), you can simply copy the contents provided [here](settings.json) and paste them in your `settings.json` file from VSCode.  
+The complete configuration including everything is found [here](complete_settings.json) (**Note**: prior installation of some extensions is required; see the following paragraphs for details).
+
+You can find `settings.json` by going to the command search with `Ctrl + Shift + P` and search for *Preferences: Open User Settings (JSON)*.  
 I will go through the contents of `settings.json` step by step and afterward we will install some other useful extensions to make your life easier.
 
 ####  [Linting](#table-of-contents)
@@ -90,7 +95,70 @@ For the other way around (from code to PDF) the default is `Ctrl + Alt + J`.
 `"editor.cursorSmoothCaretAnimation": "on"` and `"editor.cursorBlinking": "expand"` just make the cursor look a bit nicer.  
 `"editor.wordWrap": "on"` and `"editor.wrappingIndent": "indent"` will dynamically adjust the line width based on the window size.  
 `"workbench.activityBar.location": "top"` changes the location of the sidebar and makes it less prominent.  
-*Optional*: `"github.copilot.editor.enableAutoCompletions": false` disables copilot because I find it rather distracting while writing.
+
+#### [LuaTeX](#table-of-contents)
+
+Several TeX engines are available for compiling LaTeX documents, including pdfTeX, LuaTeX, and XeTeX. While pdfTeX remains widely used, there is generally little reason to prefer it over the more modern alternatives.   
+Among these, I would recommend [LuaTeX](https://www.luatex.org/), which is already included in all mayor TeX distributions such as TeX Live.
+It provides significantly better font control than pdfTeX and includes native support for OpenType fonts.  
+To configure LuaTeX as the default compiler when using LaTeX Workshop in Visual Studio Code, begin by locating `latex-workshop.latex.recipes` in the settings and click **Edit in settings.json**.
+These recipes define all the available methods of compiling your document.
+By default, the first recipe in the list is used to build the document.
+To prioritize LuaTeX, you simply need to place the corresponding recipe at the top.  
+The updated configuration in `settings.json` would look as follows:
+```
+"latex-workshop.latex.recipes": [
+
+        {
+            "name": "latexmk (lualatex)",
+            "tools": [
+                "lualatexmk"
+            ]
+        },
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        ...
+        ...
+        ...
+    ]
+```
+
+#### [Tip for Advanced Users: Improving Compilation Performance with TikZ](#table-of-contents)
+This is not strictly part of the required configuration, but rather a recommendation for advanced users who want to speed up compilation time.
+For users working with LaTeX packages that rely on **TikZ**—a powerful tool frequently used for creating diagrams or plots—compilation times can become noticeably longer, especially in documents containing multiple or complex figures.
+
+A useful optimization technique is to externalize TikZ graphics. This process involves rendering each TikZ figure as a standalone PDF file, which is automatically stored in the build directory. On subsequent compilations, LaTeX includes the pre-rendered PDF directly, treating it like a regular image. This significantly reduces compilation time, particularly when figures do not change between builds.
+
+To activate it in VSCode, search for `latex-workshop.latex.tools` and click **Edit in settings.json** in the settings.  
+There, add `"--shell-escape",` to `lualatexmk`:
+```
+{
+      "name": "lualatexmk",
+      "command": "latexmk",
+      "args": [
+        "--shell-escape",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-lualatex",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    ...
+```
+Now add 
+```
+\usepgfplotslibrary{external}
+\tikzset{external/system call={lualatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}} % chktex 18
+\tikzexternalize
+```
+to the preamble of you `.tex`-file and you are good to go!
 
 ### [Extensions](#table-of-contents)
 
@@ -124,6 +192,7 @@ After downloading, unpack the file, select all the font files, and `Right-Click 
     "terminal.integrated.fontFamily": "monospace",
     "editor.fontLigatures": "'zero', 'ss02', 'ss03', 'ss04', 'ss05', 'calt'"
     ```
+
 
 ### [3. Git](#table-of-contents)
 
@@ -187,8 +256,7 @@ Now, set *Better BibLaTeX* as the format and check *Keep updated*:
 Choose your work folder and rename the file to `literature`
 5. Now, every time you add resources to your Zotero library, they will automatically be added to your `literature.bib` file for LaTeX.
 
-## [LaTeX Template](#table-of-contents)
+## [LaTeX Template for thesis](#table-of-contents)
 
 You can find the code of my bachelor thesis (from which the [first picture](#how-it-will-look) in this document is taken) on [here](https://github.com/noahp00/latex_template_bachelorthesis).  
 I will be adding some general LaTeX tips there soon.
-

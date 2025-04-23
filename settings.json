@@ -51,5 +51,5 @@
     "editor.cursorBlinking": "expand",
     "editor.wordWrap": "on",
     "editor.wrappingIndent": "indent",
-    "github.copilot.editor.enableAutoCompletions": false
+    "workbench.activityBar.location": "top"
 }
