@@ -54,7 +54,7 @@ Theoretically this is everything you need to get it working, but we will cover s
 
 ### [Configuration](#table-of-contents)
 
-For the basic configuration (excluding the [optional stuff](#optional-for-the-aesthetic) and [LuaTeX](#luatex)), you can simply copy the contents provided [here](settings.json) and paste them in your `settings.json` file from VSCode.  
+For the basic configuration (excluding the [optional stuff](#optional-for-the-aesthetic), [LuaTeX](#luatex) and [TikZ Externalization](#tip-for-advanced-users-improving-compilation-performance-with-tikz)), you can simply copy the contents provided [here](settings.json) and paste them in your `settings.json` file from VSCode.  
 The complete configuration including everything is found [here](complete_settings.json) (**Note**: prior installation of some extensions is required; see the following paragraphs for details).
 
 You can find `settings.json` by going to the command search with `Ctrl + Shift + P` and search for *Preferences: Open User Settings (JSON)*.  
@@ -100,7 +100,8 @@ For the other way around (from code to PDF) the default is `Ctrl + Alt + J`.
 
 Several TeX engines are available for compiling LaTeX documents, including pdfTeX, LuaTeX, and XeTeX. While pdfTeX remains widely used, there is generally little reason to prefer it over the more modern alternatives.   
 Among these, I would recommend [LuaTeX](https://www.luatex.org/), which is already included in all mayor TeX distributions such as TeX Live.
-It provides significantly better font control than pdfTeX and includes native support for OpenType fonts.  
+It provides significantly better font control than pdfTeX and includes native support for OpenType fonts.
+
 To configure LuaTeX as the default compiler when using LaTeX Workshop in Visual Studio Code, begin by locating `latex-workshop.latex.recipes` in the settings and click **Edit in settings.json**.
 These recipes define all the available methods of compiling your document.
 By default, the first recipe in the list is used to build the document.
