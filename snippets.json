@@ -1,0 +1,142 @@
+{
+	// Place your snippets for latex here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	"begin": {
+		"prefix": "begin",
+		"body": [
+			"\\begin{${1:environment}}",
+			"\t$0",
+			"\\end{${1:environment}}"
+		],
+		"description": "begin an environment"
+	},
+	"corollary": {
+		"prefix": "bco",
+		"body": [
+			"\\begin{corollary}",
+			"\t$0",
+			"\\end{corollary}"
+		],
+		"description": "corollary environment"
+	},
+	"theorem": {
+		"prefix": "bth",
+		"body": [
+			"\\begin{theorem}[$1]",
+			"\t$0",
+			"\\end{theorem}"
+		],
+		"description": "theorem environment"
+	},
+	"lemma": {
+		"prefix": "ble",
+		"body": [
+			"\\begin{lemma}",
+			"\t$0",
+			"\\end{lemma}"
+		],
+		"description": "lemma environment"
+	},
+	"definition": {
+		"prefix": "bde",
+		"body": [
+			"\\begin{definition}",
+			"\t$0",
+			"\\end{definition}"
+		],
+		"description": "definition environment"
+	},
+	"example": {
+		"prefix": "bex",
+		"body": [
+			"\\begin{example}",
+			"\t$0",
+			"\\end{example}"
+		],
+		"description": "example environment"
+	},
+	"remark": {
+		"prefix": "brem",
+		"body": [
+			"\\begin{remark}",
+			"\t$0",
+			"\\end{remark}"
+		],
+		"description": "remark environment"
+	},
+	"repitition": {
+		"prefix": "brep",
+		"body": [
+			"\\begin{repitition}",
+			"\t$0",
+			"\\end{repitition}"
+		],
+		"description": "repitition environment"
+	},
+	"proof": {
+		"prefix": "bpr",
+		"body": [
+			"\\begin{proof}",
+			"\t$0",
+			"\\end{proof}"
+		],
+		"description": "proof environment"
+	},
+	"application": {
+		"prefix": "bapp",
+		"body": [
+			"\\begin{application}[$1]",
+			"\t$0",
+			"\\end{application}"
+		],
+		"description": "application environment"
+	},
+	"inline math": {
+		"prefix": "bim",
+		"body": [
+			"\\($1\\) $0"
+		],
+		"description": "inline math"
+	},
+	"overline": {
+		"prefix": "ovl",
+		"body": [
+			"\\overline{$0}"
+		],
+		"description": "overline"
+	},
+	"zcref": {
+		"prefix": "zrf",
+		"body": [
+			"\\zcref{$0}"
+		],
+		"description": "referencing"
+	},
+	"mintinline": {
+		"prefix": "min",
+		"body": [
+			"\\mintinline{python}{$0}"
+		],
+		"description": "mintinline"
+	},
+	"exercise": {
+		"prefix": "bexc",
+		"body": [
+			"\\begin{exercise}[$1]",
+			"\t$0",
+			"\\end{exercise}"
+		],
+		"description": "exercise environment"
+	},
+	"solution": {
+		"prefix": "bso",
+		"body": [
+			"\\begin{solution}[$1]",
+			"\t$0",
+			"\\end{solution}"
+		],
+		"description": "solution environment"
+	}
+}
